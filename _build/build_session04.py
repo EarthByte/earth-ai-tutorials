@@ -7,7 +7,7 @@ cells = []
 cells.append(md("""
 # Session 4 — Reading Earth's Ancient Climate
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
 Same idea as Session 2's Part A (best-fit line), used the way climate scientists actually use
 it: a proxy measurement (an isotope ratio, a trace-element ratio, a pollen count) is noisy and

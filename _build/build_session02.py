@@ -7,7 +7,7 @@ cells = []
 cells.append(md("""
 # Session 2 — The Best-Fit Line and the Sorting Machine
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
 Session 1 described real data with numbers computed by hand — mean, median, standard
 deviation, percentiles. This notebook introduces the shift that "AI" or "machine learning"

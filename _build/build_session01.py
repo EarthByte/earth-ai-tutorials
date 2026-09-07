@@ -7,7 +7,7 @@ cells = []
 cells.append(md("""
 # Session 1 — Statistical Foundations: Describing Real Geological Data
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
 Before anything resembling "AI" appears in this module (Session 2 onward), this notebook
 covers the more basic skill everything else is built on: describing a real dataset honestly

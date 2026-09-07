@@ -7,7 +7,7 @@ cells = []
 cells.append(md("""
 # Session 3 — What Is a Neural Network, Really?
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
 **Before this notebook:** spend 10-15 minutes in **TensorFlow Playground**
 ([playground.tensorflow.org](https://playground.tensorflow.org/)) — pick the "circle" dataset,
@@ -48,7 +48,7 @@ print("Ready.")
 cells.append(md("""
 ## 1. A mapping problem a straight line can't solve
 
-Porphyry-Cu systems (the same deposit type behind Module 1's T73/T75 and Session 5) classically
+Porphyry-Cu systems (the same deposit type Session 5 returns to) classically
 show **concentric alteration zoning** in map view: an altered core zone surrounded by a
 halo, distinguished by geochemical measurements that shift systematically from centre to edge.
 Sort sample points into "core zone" vs "halo" from two such measurements, and the true pattern
@@ -196,8 +196,8 @@ cells.append(md("""
 A neural network is not a different idea from Session 2's sorting machine — it is the *same*
 idea (learn a boundary from labelled examples), made more flexible by combining many simple
 pieces. That flexibility is exactly why neural networks show up wherever the pattern is too
-curved or complex for a straight line or plane — including the small ones behind some of
-Module 1's mantle-dynamics and paleoclimate literature.
+curved or complex for a straight line or plane — including the small ones behind some real
+mantle-dynamics and paleoclimate research.
 
 Sessions 4-6 go back to simpler tools (mostly regression, Session 2's kind) applied to new
 Earth-evolution problems — the point of this session was to see *why* a more flexible tool

@@ -22,9 +22,9 @@ statistics any real dataset deserves before any modelling starts, to open a real
 notebook, understand what each part of it is doing, deliberately change something in it,
 correctly predict what should happen as a result, and recognise the difference between a
 method that is working well and one that has quietly started extrapolating beyond what it
-actually knows. Some notebooks in the companion module — the detrital-zircon tectonic-setting
-predictor, the porphyry-copper prospectivity maps — are themselves applications of the same
-ideas this module teaches from first principles.
+actually knows. Some real, published Earth-science notebooks — a detrital-zircon tectonic-setting predictor,
+porphyry-copper prospectivity maps — are themselves applications of the same ideas this module
+teaches from first principles.
 
 ## Who this module is for
 
@@ -34,11 +34,11 @@ it. What is assumed is basic computer literacy — using a web browser, managing
 having (or being willing to create) a Google account, since every notebook runs in Google Colab
 and needs nothing installed on your own machine.
 
-A few sessions refer back to specific notebooks and a specific paper from the companion module,
+A few sessions refer back to specific notebooks and a specific paper from
 *Earth Evolution — Spatio-Temporal Data and Model Analysis* (T15, T24, and T73–T80, and
-Farahbakhsh et al. 2025). Having taken that module, or being generally familiar with
-plate-tectonic reconstructions, makes those references land a little more easily, but each one
-is explained again in context here, so it is not a prerequisite.
+Farahbakhsh et al. 2025). Being generally familiar with plate-tectonic reconstructions makes
+those references land a little more easily, but each one is explained again in context here,
+so it is not a prerequisite.
 
 If a notebook's code is genuinely mysterious after reading its explanations, that is a sign to
 ask, not a sign you don't belong in the room — the module is built around the assumption that
@@ -78,8 +78,8 @@ densities, geochemical concentrations, a two-species depth/size dataset, and a f
 survey — computing the same summary statistics (and the specialised tools directional data
 needs) a geologist would use in any field report, before any model of any kind gets fitted to
 anything. Every
-notebook from Session 2 onward then follows the same pattern as the companion module's
-`pygplates` workflows: a **`# === USER CONFIGURATION ===`** cell near the top marks the handful
+notebook from Session 2 onward then follows the same pattern throughout: a
+**`# === USER CONFIGURATION ===`** cell near the top marks the handful
 of things you are meant to change, followed by cells that run correctly without needing to be
 understood line by line on first read. You are never handed a blank cell and asked to write
 code from nothing — every session asks you to run real, working code, then deliberately change
@@ -107,7 +107,7 @@ with no assumed programming background.
 | 2 | The best-fit line and the sorting machine | Notebook | The two core ideas of the module's second half — regression and classification — introduced by analogy, then applied to real rock-property data, reusing Session 1's summary statistics to compare two rock types before a computer learns to sort them automatically. |
 | 3 | What is a neural network, really? | Notebook (paired with TensorFlow Playground) | TensorFlow Playground first, for visual intuition — drag sliders, watch a network's decision boundary grow more complex. Then a real neural-network notebook where you change the number of layers or neurons and observe the effect. |
 | 4 | Reading Earth's ancient climate | Notebook | The regression idea again, applied to a noisy climate proxy record. You fit a curve to real-shaped proxy data, then change which proxy or time window is used and read the new curve — including a hands-on look at what overfitting actually looks like. |
-| 5 | Finding hidden ore deposits | Notebook | The classification idea again, applied to a simplified mineral-prospectivity model in the spirit of Farahbakhsh et al. (2025) — the paper behind the companion module's porphyry-copper notebooks. You change a threshold or input feature and watch the predicted "target zone" map respond. |
+| 5 | Finding hidden ore deposits | Notebook | The classification idea again, applied to a simplified mineral-prospectivity model in the spirit of Farahbakhsh et al. (2025) — a real published porphyry-copper prospectivity study. You change a threshold or input feature and watch the predicted "target zone" map respond. |
 | 6 | Speeding up a slow Earth model | Notebook | A case study in why some Earth simulations are too slow to explore many scenarios directly, and how a fast, trained model can stand in for a slow one. The lightest hands-on session by design — the concept matters more than the code here. |
 | 7 | Generative AI and LLMs in geoscience research | Notebook (deliberately buggy) | Practical, discussion-led: where LLM tools genuinely help with literature search, drafting, and code, and where they confidently invent wrong stratigraphy, ages, or citations. Hands-on: use an LLM to help debug five small, deliberately broken scripts from earlier sessions. |
 | 8 | Can we trust it? | Discussion, no notebook | Why deep time is a genuinely hard case for AI — there is almost no way to check a 300-million-year-old prediction against reality — anchored in code and results you've already produced yourself in Sessions 2–6. |

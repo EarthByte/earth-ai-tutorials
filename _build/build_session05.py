@@ -7,10 +7,10 @@ cells = []
 cells.append(md("""
 # Session 5 — Finding Hidden Ore Deposits
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
 This is Session 2's "sorting machine" idea (classification), applied to the same kind of
-problem as Module 1's T73/T75 notebooks and the paper behind them:
+problem as a real published study:
 
 > Farahbakhsh, E. et al. (2025). *"Machine Learning-Based Spatio-Temporal Prospectivity
 > Modeling of Porphyry Systems in the New Guinea and Solomon Islands Region."* Tectonics.
@@ -213,8 +213,8 @@ cells.append(md("""
 cells.append(md("""
 ## Wrap-up
 
-This is the exact shape of Module 1's T73/T75 prospectivity notebooks and the Farahbakhsh et
-al. (2025) paper behind them — known deposit/non-deposit points, a handful of input layers, a
+This is the exact shape of the Farahbakhsh et al. (2025) paper behind it — known
+deposit/non-deposit points, a handful of input layers, a
 classifier trained to generalise from the known points to the whole area. Real published
 prospectivity models add many more input layers, much larger and more carefully validated
 training sets, and (per Farahbakhsh et al.) reconstructed plate-tectonic history as an input —

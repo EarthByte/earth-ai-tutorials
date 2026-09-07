@@ -1,4 +1,4 @@
-# Instructor Notes — Module 2: Data Science and AI Applied to Understanding Earth Evolution
+# Instructor Notes — Data Science and AI Applied to Understanding Earth Evolution
 
 Working notes for running the module: timing, what to demo live vs. what students run
 themselves, licensing, and setup. Session-by-session pedagogy and rationale live in the
@@ -21,7 +21,7 @@ code commented at the same level of explanation as the surrounding cells.
 | 2 | 20 min intro (regression/classification analogies) · 90 min `S02` hands-on (both parts) · 20 min optional Teachable Machine demo · 20 min wrap | GeoSMART or CSU "Classic ML" notebook, as a second worked example if time allows | `S02_BestFit_and_Sorting_Machine.ipynb` |
 | 3 | 20 min TensorFlow Playground (individually) · 90 min `S03` hands-on · 20 min GeoSMART "Deep Learning" notebook, live · 20 min wrap | TensorFlow Playground; GeoSMART Deep Learning | `S03_Neural_Networks_Hands_On.ipynb` |
 | 4 | 15 min framing · 100 min `S04` hands-on, including the overfitting exercise · 35 min discussion of what a "reconstructed climate curve" actually is | — | `S04_Reading_Ancient_Climate.ipynb` |
-| 5 | 15 min link back to Module 1 T73/T75 and the Farahbakhsh paper · 100 min `S05` hands-on · 35 min discussion | — | `S05_Finding_Hidden_Ore_Deposits.ipynb` |
+| 5 | 15 min framing via the Farahbakhsh paper and its real prospectivity workflow · 100 min `S05` hands-on · 35 min discussion | — | `S05_Finding_Hidden_Ore_Deposits.ipynb` |
 | 6 | 15 min framing (why simulations are slow) · 60 min `S06` hands-on (includes a ~25 s training wait — flag this in advance so it reads as "the point," not a hang) · 55 min discussion of the extrapolation danger, feeding into Session 8 | — | `S06_Speeding_Up_a_Slow_Earth_Model.ipynb` |
 | 7 | 15 min on prompting an LLM well · 100 min `S07` debugging exercises (work in pairs) · 35 min share-out: which bug was hardest, and why Exercise 5 is different | — | `S07_GenAI_Assisted_Debugging.ipynb` (see answer key below) |
 | 8 | Full session: discussion, `S08_Discussion_Guide.md` | GeoSMART, Workflows/Reproducibility & Rigor | — |

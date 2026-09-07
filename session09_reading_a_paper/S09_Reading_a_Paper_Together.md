@@ -1,6 +1,6 @@
 # Session 9 — Reading a Real AI Paper, Together
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
 No notebook this session — this is a guided close reading, done as a class, of the paper
 Sessions 1 and 5 have been building toward:
@@ -10,8 +10,8 @@ Sessions 1 and 5 have been building toward:
 > and Solomon Islands Region.* **Tectonics**.
 > [https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2024TC008362](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2024TC008362)
 
-This is the actual paper behind Module 1's T73/T75 notebooks, and the direct real-world version
-of the exercise you ran yourself, simplified, in Session 5.
+This is the direct real-world version of the exercise you ran yourself, simplified, in
+Session 5.
 
 ## How to read it (the reusable skill, not just this paper)
 
@@ -28,7 +28,7 @@ For each section, work out three things before moving to the next section:
 - **Abstract/Introduction:** What gap in existing porphyry-exploration methods is the paper
   trying to fill? Why does the New Guinea/Solomon Islands region need this specifically?
 - **Data & input features:** What goes into the model — and which inputs (if any) come from
-  plate reconstruction, the way Module 1's own workflows do? How were "known deposit" and
+  plate reconstruction? How were "known deposit" and
   "no deposit" locations decided?
 - **Method:** Which of Session 2/3/5's ideas (regression, classification, or something more
   elaborate) is actually being used? Is it closer to Session 5's random forest, or something

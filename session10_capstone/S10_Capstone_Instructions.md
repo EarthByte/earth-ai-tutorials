@@ -1,9 +1,9 @@
 # Session 10 — Capstone
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
-This mirrors Module 1's own capstone exactly: adapt a working notebook's configuration to
-something new, rather than building anything from a blank cell.
+This follows the same idea running through this module: adapt a working notebook's
+configuration to something new, rather than building anything from a blank cell.
 
 ## What to do
 

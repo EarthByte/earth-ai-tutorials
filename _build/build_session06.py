@@ -7,7 +7,7 @@ cells = []
 cells.append(md("""
 # Session 6 — Speeding Up a Slow Earth Model
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
 Some Earth simulations — mantle convection, landscape evolution, ice-sheet models — take
 hours, days, or weeks to run one scenario. Exploring many scenarios (different parameters,

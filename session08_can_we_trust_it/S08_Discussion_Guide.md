@@ -1,6 +1,6 @@
 # Session 8 — Can We Trust It? (Discussion Guide)
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
 No notebook this session — this is a conceptual discussion, anchored in code you've already
 run in Sessions 2–6 rather than anything new.

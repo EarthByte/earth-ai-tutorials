@@ -7,7 +7,7 @@ cells = []
 cells.append(md("""
 # Session 7 — Generative AI and LLMs in Geoscience Research
 
-**Module 2 · Data Science and AI Applied to Understanding Earth Evolution**
+**Data Science and AI Applied to Understanding Earth Evolution**
 
 Two things happen in this session:
 
