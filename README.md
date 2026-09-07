@@ -1,6 +1,7 @@
 # Data Science and AI Applied to Understanding Earth Evolution
 
-A standalone Honours (4th-year) module. 25 contact hours, 10 sessions. Full session-by-session
+A standalone Honours (4th-year) module. 3 credit points (approximately 25 contact hours), 10
+sessions. Full session-by-session
 rationale, learning outcomes, and assessment weighting are in the planning document; this folder
 is the actual teaching material.
 
