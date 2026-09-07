@@ -76,11 +76,9 @@ CSU's notebooks — GeoSMART ("Machine Learning in the Geosciences",
 text/figures, MIT code) and CSU's `ml_tutorial_csu`
 ([github.com/eabarnes1010/ml_tutorial_csu](https://github.com/eabarnes1010/ml_tutorial_csu),
 MIT) are used as the live-demo/backbone resources named in the course outline, credited where
-they're used, not embedded here. Session 1's real data (density, geochemistry, the
-depth/size dataset, and the fault dip/dip-direction survey) are reused, with permission, from
-R.D. Müller's own historical "Statistics for Geoscientists" course material at the University
-of Sydney — not from GeoSMART, CSU, or any external published source. Full attribution detail
-is in `instructor_notes/`.
+they're used, not embedded here. Session 1's data are adapted from a previous (unpublished) 
+Honours course designed by R.D. Müller entitled "Statistics for Geoscientists" at the University
+of Sydney.
 
 ## License
 
