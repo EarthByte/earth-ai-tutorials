@@ -12,8 +12,8 @@ cells.append(md("""
 Before anything resembling "AI" appears in this module (Session 2 onward), this notebook
 covers the more basic skill everything else is built on: describing a real dataset honestly
 with a handful of numbers. No prior programming experience is assumed, and nothing here
-depends on having taken any other module. The two datasets used below are real measurements,
-drawn from a University of Sydney statistics-for-geoscientists course.
+depends on having taken any other module. The real measurements used throughout are drawn from
+a University of Sydney statistics-for-geoscientists course.
 
 By the end of this notebook you should be able to:
 - Run a Jupyter/Colab notebook cell by cell, and read a basic Python cell well enough to guess
@@ -24,6 +24,10 @@ By the end of this notebook you should be able to:
   changes the visual impression the same numbers give.
 - Recognise a right-skewed dataset from its histogram and summary statistics, and explain why
   geochemical concentration data is usually analysed after a log transform.
+- Compute a rank-based (Spearman) correlation coefficient and explain when it's a better choice
+  than an ordinary correlation.
+- Explain why compass-direction data needs its own tools -- a rose diagram, a test for a real
+  preferred direction, and a stereonet -- rather than an ordinary histogram and mean.
 """))
 
 cells.append(md("""
@@ -283,13 +287,261 @@ cells.append(md("""
 """))
 
 cells.append(md("""
-## 3. Before Session 2
+## 3. Rank correlation with two real species datasets
 
-Every number introduced here — mean, median, standard deviation, percentile, and the log
-transform — reappears throughout this module. Session 2 uses exactly these tools to compare
-two rock types side by side before teaching a computer to do that sorting automatically, and
-Session 5 returns to this exact "is this measurement unusually high" logic to search for real
-ore deposits.
+Not every real relationship between two variables is well described by a straight line — the
+next real dataset shows why. The measurements below come from the same
+statistics-for-geoscientists course: some measure of body size recorded against sample depth,
+for two different species (Species A, n=26; Species B, n=33). The units for "size" and "depth"
+weren't recorded alongside the numbers, so treat the plots below as describing the
+*statistical* relationship, not a specific biological story.
+"""))
+
+cells.append(code("""
+# === USER CONFIGURATION ===
+SPECIES_TO_EXAMINE = "A"   # "A" or "B"
+"""))
+
+cells.append(code("""
+# Species A: 26 real (depth, size) measurements.
+depth_a = np.array([202, 203, 208, 233, 251, 258, 271, 282, 283, 301, 308, 314, 327, 329,
+                     330, 350, 356, 378, 385, 386, 387, 399, 411, 422, 428, 446])
+size_a = np.array([0.6, 0.4, 0.8, 1.2, 0.7, 0.7, 0.5, 0.4, 0.8, 0.7, 0.6, 1.1, 1.0, 1.0,
+                    0.6, 0.6, 0.7, 0.8, 0.9, 0.7, 0.5, 0.5, 0.8, 1.1, 1.1, 0.9])
+
+# Species B: 33 real (depth, size) measurements.
+depth_b = np.array([242, 253, 271, 292, 305, 332, 335, 337, 338, 350, 357, 364, 365, 371,
+                     372, 385, 401, 402, 410, 412, 418, 423, 427, 429, 432, 446, 451, 454,
+                     460, 470, 474, 481, 497])
+size_b = np.array([1.3, 0.9, 0.7, 0.8, 0.8, 1.2, 0.9, 1.1, 1.6, 1.6, 1.0, 1.2, 1.3, 1.4,
+                    1.1, 0.9, 1.3, 1.5, 1.8, 1.6, 1.2, 1.5, 1.5, 1.7, 1.9, 1.5, 1.6, 1.2,
+                    1.6, 1.7, 1.8, 1.8, 1.3])
+
+# A dictionary of (depth, size) pairs, keyed by species -- same lookup pattern as Section 2.
+species_lookup = {"A": (depth_a, size_a), "B": (depth_b, size_b)}
+depth, size = species_lookup[SPECIES_TO_EXAMINE]
+
+plt.figure(figsize=(6, 4))
+plt.scatter(depth, size, color="#B06E00" if SPECIES_TO_EXAMINE == "A" else "#1C5AA0")
+plt.xlabel("Depth")
+plt.ylabel("Size")
+plt.title(f"Species {SPECIES_TO_EXAMINE}: size vs. depth (n={depth.size})")
+plt.tight_layout()
+plt.show()
+"""))
+
+cells.append(md("""
+The scatter trends upward but not as a clean straight line — exactly the kind of relationship
+**Spearman's rank correlation coefficient** was built for. Instead of using the raw numbers, it
+replaces each dataset with its **ranks** (1 = smallest, 2 = next smallest, and so on) and then
+measures how consistently the ranks move together. Because it only cares about *order*, not
+exact values, it still works when a relationship is consistently increasing but curved, and it
+isn't thrown off by a single extreme outlier the way an ordinary correlation would be.
+"""))
+
+cells.append(code("""
+from scipy.stats import rankdata, spearmanr
+
+# rankdata assigns 1 to the smallest value, 2 to the next, and so on -- tied values share the
+# average of the ranks they would otherwise occupy.
+depth_ranks = rankdata(depth)
+size_ranks = rankdata(size)
+
+print("depth :", depth)
+print("ranks :", depth_ranks)
+print()
+print("size  :", size)
+print("ranks :", size_ranks)
+
+# spearmanr computes the correlation directly and also returns a p-value: the probability of
+# seeing a correlation at least this strong by chance alone if there were truly no relationship.
+rho, p_value = spearmanr(depth, size)
+print(f"\\nSpearman's rho = {rho:.3f}, p-value = {p_value:.4f}")
+"""))
+
+cells.append(md("""
+### Try it
+
+1. Switch `SPECIES_TO_EXAMINE` to the other species and re-run. Is its rho similar, stronger, or
+   weaker?
+2. A rho close to +1 means the ranks move together almost perfectly; close to 0 means no
+   consistent relationship; close to -1 means one variable's rank falls as the other's rises.
+   Where does each species fall on that scale?
+3. `spearmanr` is just an ordinary correlation computed on the ranks instead of the raw values.
+   If you're curious, try `from scipy.stats import pearsonr; pearsonr(depth, size)` on the raw
+   numbers and compare the two coefficients.
+"""))
+
+cells.append(md("""
+## 4. Directional data needs different tools: rose diagrams, the Rayleigh test, and stereonets
+
+Every dataset so far has been a plain number line: density, concentration, size. Structural
+geology adds a genuinely different data type: **orientation** — the compass direction a fault
+plane dips towards. An ordinary histogram breaks down for this kind of data, because 359
+degrees and 1 degree are almost the same direction but sit at opposite ends of a normal x-axis.
+The measurements below are real: the dip angle and dip direction of 126 fault planes measured
+underground, reused with permission from the same statistics-for-geoscientists course as the
+datasets above.
+"""))
+
+cells.append(code("""
+# === USER CONFIGURATION ===
+N_DIRECTION_BINS = 24   # 24 bins of 15 degrees each is a standard rose-diagram choice
+"""))
+
+cells.append(code("""
+# 126 real fault-plane dip angles, degrees (0 = horizontal, 90 = vertical).
+fault_dip = np.array([
+    48, 65, 83, 74, 87, 52, 56, 57, 60, 73, 79, 52, 43, 57, 69, 71, 69, 87, 70, 35,
+    33, 75, 87, 72, 15, 34, 60, 63, 59, 59, 64, 60, 42, 40, 80, 97, 79, 69, 83, 60,
+    79, 58, 66, 16, 78, 69, 76, 82, 84, 73, 85, 73, 74, 81, 77, 52, 69, 68, 81, 83,
+    71, 83, 87, 78, 69, 63, 74, 81, 86, 87, 77, 69, 72, 74, 19, 86, 81, 74, 37, 31,
+    74, 79, 84, 85, 85, 79, 86, 82, 73, 75, 76, 78, 69, 86, 72, 35, 47, 51, 55, 82,
+    79, 71, 86, 81, 84, 72, 79, 76, 85, 78, 79, 85, 60, 81, 71, 75, 74, 71, 78, 50,
+    84, 77, 41, 53, 74, 60,
+])
+# The same 126 faults' dip direction, degrees clockwise from north (0-360).
+fault_dipdir = np.array([
+    330, 70, 84, 350, 275, 81, 84, 324, 75, 50, 69, 1, 16, 98, 85, 95,
+    108, 114, 107, 271, 339, 305, 110, 311, 123, 324, 295, 295, 55, 96, 268, 290,
+    67, 105, 90, 87, 119, 92, 280, 86, 89, 88, 94, 280, 302, 47, 42, 274,
+    107, 114, 314, 98, 349, 88, 255, 90, 92, 65, 78, 78, 85, 28, 45, 91,
+    117, 285, 295, 104, 273, 105, 108, 34, 48, 79, 145, 300, 297, 103, 81, 87,
+    79, 173, 72, 71, 283, 60, 256, 270, 259, 249, 87, 93, 105, 109, 108, 125,
+    95, 103, 105, 291, 266, 250, 62, 268, 271, 284, 279, 278, 105, 295, 268, 292,
+    278, 96, 293, 109, 107, 314, 160, 108, 273, 245, 118, 313, 286, 112,
+])
+
+print(f"n = {fault_dip.size} fault planes")
+print(f"dip: mean={fault_dip.mean():.1f} deg, range={fault_dip.min()}-{fault_dip.max()} deg")
+print("dip direction spans the full 0-360 deg compass")
+"""))
+
+cells.append(md("""
+### The rose diagram
+
+A **rose diagram** is a histogram wrapped around a circle instead of laid out on a straight
+line, so directions near 0 degrees and 360 degrees end up next to each other, exactly like they
+are on a real compass.
+"""))
+
+cells.append(code("""
+# Bin edges around the full circle, in radians (matplotlib's polar axes work in radians).
+bin_edges = np.linspace(0, 2 * np.pi, N_DIRECTION_BINS + 1)
+dipdir_rad = np.deg2rad(fault_dipdir)
+counts, _ = np.histogram(dipdir_rad, bins=bin_edges)
+
+fig = plt.figure(figsize=(5, 5))
+ax = fig.add_subplot(projection="polar")
+ax.set_theta_zero_location("N")   # 0 degrees points up (north), like a compass
+ax.set_theta_direction(-1)        # degrees increase clockwise, like a compass
+bin_width = bin_edges[1] - bin_edges[0]
+ax.bar(bin_edges[:-1], counts, width=bin_width, color="#3F7A32", edgecolor="white", align="edge")
+ax.set_title(f"Rose diagram: dip direction of {fault_dip.size} fault planes")
+plt.tight_layout()
+plt.show()
+"""))
+
+cells.append(md("""
+### Is there a real preferred direction, or could this be random chance?
+
+Eyeballing a rose diagram can be misleading — some clustering happens by chance even in truly
+random directions. The **Rayleigh test** answers this properly. Treat each direction as a unit
+vector (length 1, pointing the measured way), add all 126 vectors together, and look at the
+length of the result: if directions are scattered evenly around the compass, the vectors mostly
+cancel out and the resultant is short; if there's a real preferred direction, they reinforce
+each other and the resultant stays long.
+"""))
+
+cells.append(code("""
+n = fault_dipdir.size
+rad = np.deg2rad(fault_dipdir)
+
+sin_sum = np.sin(rad).sum()
+cos_sum = np.cos(rad).sum()
+
+# Mean resultant length R: 0 = directions perfectly scattered, 1 = all directions identical.
+R = np.sqrt(sin_sum**2 + cos_sum**2) / n
+
+# Mean direction: where the resultant vector points. arctan2 (rather than plain arctan) handles
+# all four compass quadrants correctly.
+mean_direction = np.rad2deg(np.arctan2(sin_sum, cos_sum)) % 360
+
+# Rayleigh test statistic and its large-sample approximate p-value (Mardia & Jupp, 2000).
+Z = n * R**2
+p_approx = np.exp(-Z)
+
+print(f"mean resultant length R = {R:.3f}")
+print(f"mean preferred direction = {mean_direction:.1f} deg")
+print(f"Rayleigh's Z = {Z:.2f}, approximate p-value = {p_approx:.2e}")
+print()
+if p_approx < 0.05:
+    print("p < 0.05: reject the 'no preferred direction' null hypothesis -- these faults really")
+    print("do cluster around a preferred orientation.")
+else:
+    print("p >= 0.05: not enough evidence to reject random, uniformly scattered directions.")
+"""))
+
+cells.append(md("""
+### The Schmidt net: combining dip and dip direction
+
+A fault plane needs *two* numbers to describe fully — how steep it is (dip) and which way it
+faces (dip direction) — and a rose diagram only shows one of them. Structural geologists solve
+this with a **stereonet**: every fault plane becomes a single point on a circular plot, using an
+**equal-area (Schmidt) projection** so that planes scattered evenly in 3D space produce an even
+scatter of points on the page (unlike an equal-*angle* projection, which visually crowds points
+toward the edge).
+"""))
+
+cells.append(code("""
+# Equal-area (Schmidt) projection of each fault's dip vector (the direction of steepest descent
+# on the plane): plunge = dip, trend = dip direction.
+theta = np.deg2rad(90 - fault_dipdir)                     # compass azimuth -> standard math angle
+rho = np.sqrt(2) * np.sin(np.deg2rad(90 - fault_dip) / 2)  # equal-area radius from plunge
+
+x = rho * np.cos(theta)
+y = rho * np.sin(theta)
+
+fig, ax = plt.subplots(figsize=(5.5, 5.5))
+circle = plt.Circle((0, 0), 1.0, fill=False, color="#101D31", linewidth=1.5)
+ax.add_patch(circle)
+for label, (lx, ly) in {"N": (0, 1.08), "S": (0, -1.08), "E": (1.08, 0), "W": (-1.08, 0)}.items():
+    ax.text(lx, ly, label, ha="center", va="center", fontsize=11, color="#101D31")
+ax.scatter(x, y, s=18, color="#B06E00", alpha=0.75, edgecolor="none")
+ax.set_xlim(-1.25, 1.25)
+ax.set_ylim(-1.25, 1.25)
+ax.set_aspect("equal")
+ax.axis("off")
+ax.set_title(f"Schmidt net: {fault_dip.size} fault-plane dip vectors")
+plt.tight_layout()
+plt.show()
+"""))
+
+cells.append(md("""
+A single, dense cluster on the net (rather than points scattered evenly all over it) is the
+stereonet signature of one dominant fault set — exactly what the rose diagram and the Rayleigh
+test already pointed to, now confirmed with both angle *and* direction in a single plot.
+
+### Try it
+
+1. Change `N_DIRECTION_BINS` to 12 (30 degree bins) and re-run the rose diagram. Does the
+   preferred direction still look the same with fewer, wider bins?
+2. The Rayleigh test assumes the data really is directional (angles), not linear. Try
+   `np.mean([350, 10])` — is 180 a sensible "average" of two directions either side of north?
+   That's why an ordinary mean doesn't work here.
+3. On the Schmidt net, points near the centre correspond to steep dips (close to vertical);
+   points near the rim are shallow, close-to-horizontal dips. Does the net's overall shape
+   (clustered inward vs. spread toward the rim) match the dip range printed above?
+"""))
+
+cells.append(md("""
+## 5. Before Session 2
+
+Every idea introduced here — descriptive statistics, the log transform, rank correlation, and
+the tools directional data needs — reappears throughout this module. Session 2 uses exactly
+these tools to compare two rock types side by side before teaching a computer to do that
+sorting automatically, and Session 5 returns to this exact "is this measurement unusually high"
+logic to search for real ore deposits.
 
 One short, free, no-installation resource — read/try before next session if you can, but not
 required to follow along:
@@ -305,7 +557,9 @@ In your own words (a sentence is enough, no need to write it down), try answerin
    median, while a density dataset's mean and median stay close together?
 2. Between a very small number of histogram bins and a very large one, which felt like the
    more honest summary of the same 40 density measurements, and why?
-3. If a code cell says a variable "is not defined," what's the first thing to check? (Section 0
+3. Why does an ordinary mean give a misleading answer for compass-direction data, and what tool
+   from this notebook fixes it?
+4. If a code cell says a variable "is not defined," what's the first thing to check? (Section 0
    has the answer.)
 """))
 

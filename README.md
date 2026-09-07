@@ -54,11 +54,15 @@ jupyter notebook
 
 ## What's real and what's synthetic
 
-Session 1 uses **real measurements**: 40 rock density values and 58 paired lead/zinc
-geochemical concentrations, both drawn from a University of Sydney statistics-for-geoscientists
+Session 1 uses **real measurements** throughout: 40 rock density values, 58 paired lead/zinc
+geochemical concentrations, a two-species depth-vs-size dataset, and a 126-measurement fault
+dip/dip-direction survey — all drawn from a University of Sydney statistics-for-geoscientists
 course. Every other dataset, in every other notebook, is **synthetic**, generated in the
 notebook itself so nothing needs to be downloaded and so the "true" underlying relationship is
-always available for comparison. Each synthetic dataset is built to be realistic in shape and
+always available for comparison. There are no external data files anywhere in this module: the
+real Session 1 values are hard-coded as plain arrays directly in that notebook's cells, and
+every synthetic dataset is generated in place by code — nothing to host, fetch, or keep in
+sync separately. Each synthetic dataset is built to be realistic in shape and
 grounded in a real geoscience relationship (seafloor spreading kinematics, porphyry alteration
 zoning, Cenozoic-style cooling), and every notebook says so explicitly where it matters.
 Session 9's paper (Farahbakhsh et al., 2025) is the other place this module points at real,
@@ -72,10 +76,11 @@ CSU's notebooks — GeoSMART ("Machine Learning in the Geosciences",
 text/figures, MIT code) and CSU's `ml_tutorial_csu`
 ([github.com/eabarnes1010/ml_tutorial_csu](https://github.com/eabarnes1010/ml_tutorial_csu),
 MIT) are used as the live-demo/backbone resources named in the course outline, credited where
-they're used, not embedded here. Session 1's real density and geochemistry data are reused,
-with permission, from R.D. Müller's own historical "Statistics for Geoscientists" course
-material at the University of Sydney — not from GeoSMART, CSU, or any external published
-source. Full attribution detail is in `instructor_notes/`.
+they're used, not embedded here. Session 1's real data (density, geochemistry, the
+depth/size dataset, and the fault dip/dip-direction survey) are reused, with permission, from
+R.D. Müller's own historical "Statistics for Geoscientists" course material at the University
+of Sydney — not from GeoSMART, CSU, or any external published source. Full attribution detail
+is in `instructor_notes/`.
 
 ## License
 

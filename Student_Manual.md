@@ -74,8 +74,10 @@ By the end of the module, you should be able to:
 ## How the module works
 
 The module opens with real data, not AI: Session 1 works entirely with real measurements — rock
-densities and geochemical concentrations — computing the same summary statistics a geologist
-would compute in any field report, before any model of any kind gets fitted to anything. Every
+densities, geochemical concentrations, a two-species depth/size dataset, and a fault-orientation
+survey — computing the same summary statistics (and the specialised tools directional data
+needs) a geologist would use in any field report, before any model of any kind gets fitted to
+anything. Every
 notebook from Session 2 onward then follows the same pattern as the companion module's
 `pygplates` workflows: a **`# === USER CONFIGURATION ===`** cell near the top marks the handful
 of things you are meant to change, followed by cells that run correctly without needing to be
@@ -101,7 +103,7 @@ with no assumed programming background.
 
 | # | Session | Format | What happens |
 |---|---|---|---|
-| 1 | Statistical foundations: describing real geological data | Notebook — real data | Using real rock density measurements and real lead/zinc geochemical concentrations, compute and interpret the mean, median, standard deviation, and percentiles of a dataset; build a histogram with a defensible bin count; and see first-hand why right-skewed geochemical data is usually analysed after a log transform. |
+| 1 | Statistical foundations: describing real geological data | Notebook — real data | Using real rock density measurements and real lead/zinc geochemical concentrations, compute and interpret the mean, median, standard deviation, and percentiles of a dataset; build a histogram with a defensible bin count; and see first-hand why right-skewed geochemical data is usually analysed after a log transform. Then, with two more real datasets, compute a rank-based correlation and learn why compass-direction data (like fault orientations) needs its own tools: rose diagrams, a test for a real preferred direction, and a stereonet. |
 | 2 | The best-fit line and the sorting machine | Notebook | The two core ideas of the module's second half — regression and classification — introduced by analogy, then applied to real rock-property data, reusing Session 1's summary statistics to compare two rock types before a computer learns to sort them automatically. |
 | 3 | What is a neural network, really? | Notebook (paired with TensorFlow Playground) | TensorFlow Playground first, for visual intuition — drag sliders, watch a network's decision boundary grow more complex. Then a real neural-network notebook where you change the number of layers or neurons and observe the effect. |
 | 4 | Reading Earth's ancient climate | Notebook | The regression idea again, applied to a noisy climate proxy record. You fit a curve to real-shaped proxy data, then change which proxy or time window is used and read the new curve — including a hands-on look at what overfitting actually looks like. |
@@ -131,7 +133,7 @@ working local Python setup. To open a notebook: sign in to a Google account, go 
 notebook** and select the `.ipynb` file for that session.
 
 If you would rather work locally and already have a Python environment you're comfortable
-with, every notebook only depends on NumPy, Matplotlib, and scikit-learn:
+with, every notebook only depends on NumPy, SciPy, Matplotlib, and scikit-learn:
 
 ```
 pip install -r requirements.txt
@@ -167,8 +169,9 @@ broken local environment eating into session time.
   ([github.com/e-farahbakhsh/GPlates_Workflows](https://github.com/e-farahbakhsh/GPlates_Workflows))
   — the real research repository behind that paper, worth a brief browse in Session 9.
 
-Session 1's real density and geochemistry data are not drawn from any of the above — they come
-from a historical University of Sydney statistics-for-geoscientists course.
+Session 1's real data (density, geochemistry, and the depth/size and fault-orientation
+datasets) are not drawn from any of the above — they come from a historical University of
+Sydney statistics-for-geoscientists course.
 
 ## Getting help
 

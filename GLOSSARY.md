@@ -8,6 +8,11 @@ all together.
 
 ## Statistics terms
 
+**Dip / dip direction** — two numbers that together describe the orientation of a geological
+plane such as a fault: **dip** is the steepest angle the plane makes with the horizontal (0 =
+flat, 90 = vertical), and **dip direction** is the compass bearing (0-360 degrees) that steepest
+line points toward. Session 1 uses a real set of both to introduce directional statistics.
+
 **Histogram** — a bar chart showing how many measurements fall into each of a set of equal-
 width ranges ("bins"). The number of bins chosen changes the visual impression the same data
 gives — too few hides real structure, too many makes the chart mostly noise (Session 1).
@@ -36,15 +41,35 @@ second look, not automatic removal (Session 1).
 measurements fall. The 25th, 50th (the median), and 75th percentiles are also called the
 quartiles.
 
+**Rayleigh test** — a statistical test for whether a set of compass directions has a genuine
+preferred orientation, or is just scattered randomly around the circle. Works by adding up all
+the directions as unit vectors and checking whether the combined ("resultant") vector is long
+enough that it's unlikely to have arisen from pure chance (Session 1).
+
+**Rose diagram** — a histogram wrapped around a circle instead of a straight line, used for
+compass-direction data so that directions near 0 degrees and 360 degrees sit next to each other
+rather than at opposite ends of the chart (Session 1).
+
 **Skewed distribution** — a dataset whose values pile up on one side with a long tail
 stretching the other way, rather than being roughly symmetric. Right-skewed data (a long tail
 of unusually high values) is common in geochemistry and usually handled with a **log
 transform**. A distribution that becomes symmetric after logging is called **log-normal**.
 
+**Spearman's rank correlation** — a correlation coefficient computed on the *ranks* of two
+variables (1st smallest, 2nd smallest, and so on) rather than their raw values. Measures how
+consistently two variables move together even when the relationship is curved rather than a
+straight line, and is not thrown off by a single extreme outlier the way an ordinary
+correlation can be (Session 1).
+
 **Standard deviation / variance** — two closely related measures of spread: the variance is
 the average squared distance of each measurement from the mean, and the standard deviation is
 its square root, expressed in the same units as the original measurement. A **standard
 deviation** is essentially what "noise level" means in Session 2's regression example.
+
+**Stereonet (Schmidt net)** — a circular plot used to show the orientation of planes or lines in
+3-D space as single points, using an **equal-area projection** so that orientations scattered
+evenly in space produce an evenly scattered set of points on the page. Session 1 plots a real
+set of fault-plane orientations this way.
 
 **Sturges' rule** — a common rule of thumb for choosing a reasonable number of histogram bins
 for a dataset of *n* measurements (`1 + log2(n)`, rounded up), used as a sensible default
@@ -177,8 +202,8 @@ calling `name(some_input)`. First appears in Session 4 (`make_proxy`) and Sessio
 library and gives it a short nickname to use for the rest of the notebook.
 
 **Library / package** — pre-written code that does something useful (maths, plotting, machine
-learning) so you don't have to write it from scratch. NumPy, Matplotlib, and scikit-learn are
-the three used throughout this module.
+learning) so you don't have to write it from scratch. NumPy, SciPy, Matplotlib, and scikit-learn
+are the ones used throughout this module.
 
 **List** — an ordered collection of items written `[item1, item2, ...]`. A **list
 comprehension** — `[expression for item in list]` — builds a new list by applying the same

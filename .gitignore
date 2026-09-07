@@ -15,3 +15,7 @@ __pycache__/
 # Scratch renders from visual QA passes (not committed deliverables)
 page-*.jpg
 slide-*.jpg
+
+# AI assistant working files (not part of the teaching material)
+CLAUDE.md
+.claude/
