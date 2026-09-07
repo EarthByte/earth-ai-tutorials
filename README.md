@@ -1,15 +1,14 @@
 # Data Science and AI Applied to Understanding Earth Evolution
 
-Module 2 of a two-module Honours (4th-year) sequence, paired with *Earth Evolution —
-Spatio-Temporal Data and Model Analysis*. 25 contact hours, 10 sessions. Full session-by-session
-rationale, learning outcomes, and assessment weighting are in the companion planning document;
-this folder is the actual teaching material.
+A standalone Honours (4th-year) module. 25 contact hours, 10 sessions. Full session-by-session
+rationale, learning outcomes, and assessment weighting are in the planning document; this folder
+is the actual teaching material.
 
-Every notebook follows the same pattern as the sibling module's `pygplates` workflows: a
-**`# === USER CONFIGURATION ===`** cell near the top marks what students are meant to change,
-followed by cells that run without needing to be understood line-by-line on first read. No
-notebook requires writing code from a blank cell — every session asks students to run real,
-working code and then deliberately change something specific in it.
+Every notebook follows the same pattern throughout: a **`# === USER CONFIGURATION ===`** cell
+near the top marks what students are meant to change, followed by cells that run without needing
+to be understood line-by-line on first read. No notebook requires writing code from a blank
+cell — every session asks students to run real, working code and then deliberately change
+something specific in it.
 
 **Written for students with little or no programming background.** Every notebook explains new
 Python/library concepts in plain language the first time they're used — not just what a line of
@@ -21,18 +20,18 @@ sessions in one place — point students to it any time unfamiliar vocabulary co
 
 ## Session map
 
-| # | Folder | Material | Format |
-|---|---|---|---|
-| 1 | `session01_statistical_foundations` | `S01_Statistical_Foundations.ipynb` | Notebook — real data, hands-on |
-| 2 | `session02_bestfit_and_sorting` | `S02_BestFit_and_Sorting_Machine.ipynb` | Notebook |
-| 3 | `session03_neural_networks` | `S03_Neural_Networks_Hands_On.ipynb` | Notebook (pair with TensorFlow Playground) |
-| 4 | `session04_ancient_climate` | `S04_Reading_Ancient_Climate.ipynb` | Notebook |
-| 5 | `session05_ore_deposits` | `S05_Finding_Hidden_Ore_Deposits.ipynb` | Notebook |
-| 6 | `session06_speeding_up_models` | `S06_Speeding_Up_a_Slow_Earth_Model.ipynb` | Notebook |
-| 7 | `session07_genai_assisted_coding` | `S07_GenAI_Assisted_Debugging.ipynb` | Notebook (deliberately buggy — see instructor notes) |
-| 8 | `session08_can_we_trust_it` | `S08_Discussion_Guide.md` | Discussion, no notebook |
-| 9 | `session09_reading_a_paper` | `S09_Reading_a_Paper_Together.md` | Reading/discussion, no notebook |
-| 10 | `session10_capstone` | `S10_Capstone_Instructions.md` | Capstone (adapts a Session 2/4/5/6 notebook) |
+| # | Folder | Material | Format | Open |
+|---|---|---|---|---|
+| 1 | `session01_statistical_foundations` | `S01_Statistical_Foundations.ipynb` | Notebook — real data, hands-on | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/EarthByte/earth-ai-tutorials/blob/main/session01_statistical_foundations/S01_Statistical_Foundations.ipynb) |
+| 2 | `session02_bestfit_and_sorting` | `S02_BestFit_and_Sorting_Machine.ipynb` | Notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/EarthByte/earth-ai-tutorials/blob/main/session02_bestfit_and_sorting/S02_BestFit_and_Sorting_Machine.ipynb) |
+| 3 | `session03_neural_networks` | `S03_Neural_Networks_Hands_On.ipynb` | Notebook (pair with TensorFlow Playground) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/EarthByte/earth-ai-tutorials/blob/main/session03_neural_networks/S03_Neural_Networks_Hands_On.ipynb) |
+| 4 | `session04_ancient_climate` | `S04_Reading_Ancient_Climate.ipynb` | Notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/EarthByte/earth-ai-tutorials/blob/main/session04_ancient_climate/S04_Reading_Ancient_Climate.ipynb) |
+| 5 | `session05_ore_deposits` | `S05_Finding_Hidden_Ore_Deposits.ipynb` | Notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/EarthByte/earth-ai-tutorials/blob/main/session05_ore_deposits/S05_Finding_Hidden_Ore_Deposits.ipynb) |
+| 6 | `session06_speeding_up_models` | `S06_Speeding_Up_a_Slow_Earth_Model.ipynb` | Notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/EarthByte/earth-ai-tutorials/blob/main/session06_speeding_up_models/S06_Speeding_Up_a_Slow_Earth_Model.ipynb) |
+| 7 | `session07_genai_assisted_coding` | `S07_GenAI_Assisted_Debugging.ipynb` | Notebook (deliberately buggy — see instructor notes) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/EarthByte/earth-ai-tutorials/blob/main/session07_genai_assisted_coding/S07_GenAI_Assisted_Debugging.ipynb) |
+| 8 | `session08_can_we_trust_it` | `S08_Discussion_Guide.md` | Discussion, no notebook | — |
+| 9 | `session09_reading_a_paper` | `S09_Reading_a_Paper_Together.md` | Reading/discussion, no notebook | — |
+| 10 | `session10_capstone` | `S10_Capstone_Instructions.md` | Capstone (adapts a Session 2/4/5/6 notebook) | — |
 
 `instructor_notes/` has the full session-by-session timing plan, the external
 GeoSMART/CSU material each session pairs with, licensing/attribution, and the Session 7 answer
@@ -43,12 +42,8 @@ these scripts too, so edits should keep the same beginner-friendly commenting st
 
 ## Running the notebooks
 
-**Google Colab (recommended for students):** no installation needed.
-- Fastest: open [colab.research.google.com](https://colab.research.google.com/), then
-  **File → Upload notebook** and pick the `.ipynb` file.
-- One-click links: push this whole folder to a GitHub repository, then a badge/link of the
-  form `https://colab.research.google.com/github/<your-username>/<repo>/blob/main/<path-to-notebook>.ipynb`
-  opens any notebook directly — worth setting up once if you'll reuse this module across years.
+**Google Colab (recommended for students):** no installation needed. Click the badge next to any
+notebook in the [session map](#session-map) above to open it directly in Colab.
 
 **Local (instructor machine, or students with a working Python setup):**
 ```
@@ -65,8 +60,8 @@ notebook itself so nothing needs to be downloaded and so the "true" underlying r
 always available for comparison. Each synthetic dataset is built to be realistic in shape and
 grounded in a real geoscience relationship (seafloor spreading kinematics, porphyry alteration
 zoning, Cenozoic-style cooling), and every notebook says so explicitly where it matters.
-Session 9's paper (Farahbakhsh et al., 2025) and its bridge to Module 1's T73/T75 notebooks are
-the other place this module points at real, published, external data and results.
+Session 9's paper (Farahbakhsh et al., 2025) is the other place this module points at real,
+published, external data and results.
 
 ## Attribution
 
